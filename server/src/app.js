@@ -13,6 +13,7 @@ import connectDB from './config/database.js';
 import authRoutes from './routes/auth.js';
 import houseRoutes from './routes/houses.js';
 import applicationRoutes from './routes/applications.js';
+import commentRoutes from './routes/comments.js'; // 新增
 
 // 配置环境变量
 dotenv.config();
@@ -37,11 +38,15 @@ app.use(helmet({
 
 // CORS配置
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:3000',
+  origin: ['http://localhost:3000', 'http://localhost:3001'], // 添加多个允许的源
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  optionsSuccessStatus: 200 // 添加这行
 }));
+
+// 添加预检请求处理
+app.options('*', cors());
 
 // 请求限制
 const limiter = rateLimit({
@@ -68,6 +73,7 @@ app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 app.use('/api/auth', authRoutes);
 app.use('/api/houses', houseRoutes);
 app.use('/api/applications', applicationRoutes);
+app.use('/api/comments', commentRoutes); // 新增
 
 // 健康检查端点
 app.get('/api/health', (req, res) => {
@@ -137,7 +143,6 @@ app.use((err, req, res, next) => {
 
 // 启动服务器
 const PORT = process.env.PORT || 5000;
-
 app.listen(PORT, () => {
   console.log(`🚀 服务器运行在端口 ${PORT}`);
   console.log(`📱 API地址: http://localhost:${PORT}/api`);

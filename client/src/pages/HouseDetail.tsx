@@ -27,6 +27,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { IHouse, ITenantInfo } from '../types';
 import { houseAPI, applicationAPI } from '../services/api';
 import useAuthStore from '../store/authStore';
+import HouseComments from '../components/HouseComments'; // 新增
 
 const { Title, Paragraph, Text } = Typography;
 const { TextArea } = Input;
@@ -148,7 +149,7 @@ const HouseDetail: React.FC = () => {
           </Card>
 
           {/* 房源详情 */}
-          <Card title="房源详情">
+          <Card title="房源详情" style={{ marginBottom: 24 }}>
             <Title level={3}>{house.title}</Title>
             <div style={{ marginBottom: 16 }}>
               <Text type="danger" style={{ fontSize: 24, fontWeight: 'bold' }}>
@@ -195,6 +196,9 @@ const HouseDetail: React.FC = () => {
               </div>
             )}
           </Card>
+
+          {/* 房源评价组件 */}
+          <HouseComments houseId={house._id} />
         </Col>
 
         {/* 右侧房东信息和操作 */}

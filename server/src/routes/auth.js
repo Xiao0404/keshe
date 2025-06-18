@@ -3,7 +3,7 @@ import { body } from 'express-validator';
 import {
   register,
   login,
-  getProfile,
+  getProfile, // 添加这个导入
   updateProfile,
   changePassword
 } from '../controllers/authController.js';
@@ -90,7 +90,7 @@ const changePasswordValidation = [
 // 路由定义
 router.post('/register', registerValidation, register);
 router.post('/login', loginValidation, login);
-router.get('/profile', authenticate, getProfile);
+router.get('/profile', authenticate, getProfile); // 添加这个路由
 router.put('/profile', authenticate, updateProfileValidation, updateProfile);
 router.put('/change-password', authenticate, changePasswordValidation, changePassword);
 

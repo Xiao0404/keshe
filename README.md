@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-# keshe
-=======
-# 房屋租赁网站系统
+# keshe # 房屋租赁网站系统
 
 一个基于 React + Node.js + MongoDB 的现代化房屋租赁管理平台。
 
@@ -152,4 +149,3 @@ pnpm start
 ## 许可证
 
 MIT License 
->>>>>>> master

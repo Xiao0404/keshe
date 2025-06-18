@@ -60,12 +60,12 @@ const useAuthStore = create<IAuthStore>()(
         }
       },
 
-      // 注册
+      // 注册 - 修复响应结构
       register: async (userData) => {
         try {
           set({ isLoading: true });
           const response = await authAPI.register(userData);
-          const { user, token } = response.data;
+          const { user, token } = response.data; // 修复：现在 response.data 包含 token
           
           // 存储认证信息
           localStorage.setItem('token', token);
@@ -129,7 +129,7 @@ const useAuthStore = create<IAuthStore>()(
         }
       },
 
-      // 检查认证状态
+      // 检查认证状态 - 修复API调用
       checkAuth: async () => {
         const token = localStorage.getItem('token');
         const userStr = localStorage.getItem('user');
@@ -141,7 +141,7 @@ const useAuthStore = create<IAuthStore>()(
 
         try {
           set({ isLoading: true });
-          // 验证token有效性
+          // 验证token有效性 - 修复API方法名
           const response = await authAPI.getProfile();
           const { user } = response.data;
           

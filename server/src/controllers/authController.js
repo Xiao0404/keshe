@@ -52,8 +52,16 @@ export const register = async (req, res) => {
 
     await user.save();
 
-    // 生成token
-    const token = generateToken(user._id);
+    // 生成JWT token
+    const token = jwt.sign(
+      { userId: user._id },
+      process.env.JWT_SECRET,
+      { expiresIn: process.env.JWT_EXPIRE || '7d' }
+    );
+
+    // 更新最后登录时间
+    user.lastLogin = new Date();
+    await user.save();
 
     res.status(201).json({
       code: 201,
@@ -67,7 +75,7 @@ export const register = async (req, res) => {
           role: user.role,
           avatar: user.avatar
         },
-        token
+        token // 确保返回token
       }
     });
   } catch (error) {

@@ -110,6 +110,53 @@ export interface IApplication {
   updatedAt: string;
 }
 
+// 评论接口
+export interface IComment {
+  _id: string;
+  houseId: string;
+  userId: IUser;
+  content: string;
+  rating?: number;
+  parentId?: string;
+  replyCount?: number;
+  isDeleted: boolean;
+  createdAt: string;
+  updatedAt: string;
+}
+
+// 评论统计接口
+export interface ICommentStats {
+  totalComments: number;
+  averageRating: number;
+  totalRatings: number;
+  ratingDistribution: {
+    1: number;
+    2: number;
+    3: number;
+    4: number;
+    5: number;
+  };
+}
+
+// 评论列表响应接口
+export interface ICommentListResponse {
+  comments: IComment[];
+  pagination: IPagination;
+}
+
+// 回复列表响应接口
+export interface IReplyListResponse {
+  replies: IComment[];
+  pagination: IPagination;
+}
+
+// 创建评论请求接口
+export interface ICreateCommentRequest {
+  content: string;
+  rating?: number;
+  parentId?: string;
+}
+
 // 登录请求接口
 export interface ILoginRequest {
   email: string;
@@ -131,7 +178,13 @@ export interface ILoginResponse {
   token: string;
 }
 
-// 房屋搜索参数接口 - 修改为字符串类型
+// 注册响应接口
+export interface IRegisterResponse {
+  user: IUser;
+  token: string;
+}
+
+// 房屋搜索参数接口
 export interface IHouseSearchParams {
   page?: number;
   limit?: number;
@@ -140,9 +193,9 @@ export interface IHouseSearchParams {
   maxPrice?: number;
   minArea?: number;
   maxArea?: number;
-  orientation?: string; // 改为 string
-  decoration?: string;  // 改为 string
-  houseType?: string;   // 改为 string
+  orientation?: string;
+  decoration?: string;
+  houseType?: string;
   keyword?: string;
   sort?: string;
   order?: 'asc' | 'desc';
