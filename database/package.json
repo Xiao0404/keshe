@@ -1,0 +1,15 @@
+{
+  "name": "rental-house-database",
+  "version": "1.0.0",
+  "description": "房屋租赁系统数据库初始化脚本",
+  "type": "module",
+  "main": "init.js",
+  "scripts": {
+    "init": "node init.js"
+  },
+  "dependencies": {
+    "mongoose": "^8.0.3",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.3.1"
+  }
+} 

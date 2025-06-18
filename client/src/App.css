@@ -1,0 +1,310 @@
+.app {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+}
+
+/* 全局样式重置 */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 布局样式 */
+.layout {
+  min-height: 100vh;
+}
+
+.layout__header {
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.layout__content {
+  min-height: calc(100vh - 64px - 70px);
+  padding: 24px;
+}
+
+.layout__footer {
+  text-align: center;
+  background: #f0f2f5;
+  padding: 24px 0;
+}
+
+/* 页面容器 */
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.page-container--full {
+  max-width: none;
+  margin: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* 卡片样式 */
+.card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 24px;
+}
+
+.card__header {
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+}
+
+.card__title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  color: #262626;
+}
+
+/* 房屋卡片样式 */
+.house-card {
+  border: 1px solid #f0f0f0;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  background: #fff;
+}
+
+.house-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.house-card__image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.house-card__content {
+  padding: 16px;
+}
+
+.house-card__title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #262626;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.house-card__price {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ff4d4f;
+  margin-bottom: 8px;
+}
+
+.house-card__info {
+  color: #8c8c8c;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.house-card__tags {
+  margin-top: 12px;
+}
+
+/* 搜索栏样式 */
+.search-bar {
+  background: #fff;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 24px;
+}
+
+.search-bar__row {
+  margin-bottom: 16px;
+}
+
+.search-bar__row:last-child {
+  margin-bottom: 0;
+}
+
+/* 筛选器样式 */
+.filter-section {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.filter-section__title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #262626;
+}
+
+/* 登录注册页面样式 */
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 400px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.auth-card__title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 32px;
+  color: #262626;
+}
+
+.auth-card__footer {
+  text-align: center;
+  margin-top: 24px;
+  color: #8c8c8c;
+}
+
+/* 状态标签样式 */
+.status-tag {
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.status-tag--available {
+  background: #f6ffed;
+  color: #52c41a;
+  border: 1px solid #b7eb8f;
+}
+
+.status-tag--rented {
+  background: #fff2e8;
+  color: #fa8c16;
+  border: 1px solid #ffd591;
+}
+
+.status-tag--pending {
+  background: #e6f7ff;
+  color: #1890ff;
+  border: 1px solid #91d5ff;
+}
+
+.status-tag--offline {
+  background: #f5f5f5;
+  color: #8c8c8c;
+  border: 1px solid #d9d9d9;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .layout__content {
+    padding: 16px;
+  }
+  
+  .page-container {
+    padding: 16px;
+    margin: 0 -16px;
+    border-radius: 0;
+  }
+  
+  .auth-card {
+    margin: 16px;
+    padding: 24px;
+  }
+  
+  .house-card__image {
+    height: 160px;
+  }
+}
+
+/* 工具类 */
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.mb-0 {
+  margin-bottom: 0 !important;
+}
+
+.mb-16 {
+  margin-bottom: 16px;
+}
+
+.mb-24 {
+  margin-bottom: 24px;
+}
+
+.mt-16 {
+  margin-top: 16px;
+}
+
+.mt-24 {
+  margin-top: 24px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-1 {
+  flex: 1;
+} 
